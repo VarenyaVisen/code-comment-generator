@@ -2,9 +2,13 @@
 
 ## 📋 Project Overview
 
-A transformer-based deep learning system that **generates natural-language comments** for Python functions. This project showcases end-to-end ML engineering: from scratch implementation of transformers to a user-friendly Streamlit interface.
+**Complete Transformer implementation from scratch for automatic Python code documentation**
 
----
+[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-green.svg)](https://streamlit.io)
+
+> *Built from scratch following "Attention Is All You Need" - demonstrates complete ML engineering pipeline and critical evaluation of model limitations.*
 
 ## 🏗️ Technical Architecture
 
