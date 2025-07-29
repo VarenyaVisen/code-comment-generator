@@ -1,0 +1,37 @@
+# Transformer Model Configuration
+model:
+  # Model dimensions
+  d_model: 128              # Hidden dimension (smaller for our dataset)
+  d_ff: 256                 # Feed-forward dimension
+  n_heads: 8                # Number of attention heads
+  n_layers: 4               # Number of encoder/decoder layers
+  
+  # Vocabulary and sequences
+  vocab_size: 181           # Will be updated from tokenizer
+  max_seq_length: 64        # Maximum sequence length
+  
+  # Dropout and regularization
+  dropout: 0.1              # Dropout rate
+  attention_dropout: 0.1    # Attention dropout
+  
+  # Positional encoding
+  max_position_embeddings: 512
+
+# Training configuration  
+training:
+  batch_size: 4             # Small batch for our dataset
+  learning_rate: 0.0001     # Conservative learning rate
+  num_epochs: 50            # More epochs for small dataset
+  warmup_steps: 100         # Learning rate warmup
+  
+  # Optimizer settings
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  weight_decay: 0.01
+  
+  # Loss and evaluation
+  label_smoothing: 0.1
+  gradient_clip_norm: 1.0
+
+# Hardware
+device: "cuda"              # Will fallback to CPU if no GPU
