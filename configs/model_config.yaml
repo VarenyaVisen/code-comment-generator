@@ -1,13 +1,13 @@
 # Transformer Model Configuration
 model:
   # Model dimensions
-  d_model: 128              # Hidden dimension (smaller for our dataset)
+  d_model: 128              # Hidden dimension
   d_ff: 256                 # Feed-forward dimension
   n_heads: 8                # Number of attention heads
   n_layers: 4               # Number of encoder/decoder layers
   
-  # Vocabulary and sequences
-  vocab_size: 181           # Will be updated from tokenizer
+  # Vocabulary and sequences (will be updated from data)
+  vocab_size: 181           # From our tokenizer
   max_seq_length: 64        # Maximum sequence length
   
   # Dropout and regularization
@@ -19,10 +19,10 @@ model:
 
 # Training configuration  
 training:
-  batch_size: 4             # Small batch for our dataset
+  batch_size: 2             # Small batch for our dataset
   learning_rate: 0.0001     # Conservative learning rate
-  num_epochs: 50            # More epochs for small dataset
-  warmup_steps: 100         # Learning rate warmup
+  num_epochs: 100           # Many epochs for small dataset
+  warmup_steps: 50          # Learning rate warmup
   
   # Optimizer settings
   adam_beta1: 0.9
@@ -32,6 +32,21 @@ training:
   # Loss and evaluation
   label_smoothing: 0.1
   gradient_clip_norm: 1.0
+  
+  # Checkpointing
+  save_every: 20            # Save model every 20 epochs
+  eval_every: 10            # Evaluate every 10 epochs
+  
+  # Early stopping
+  patience: 30              # Stop if no improvement for 30 epochs
+  min_delta: 0.001          # Minimum improvement threshold
+
+# Paths
+paths:
+  model_save_dir: "checkpoints"
+  logs_dir: "logs"
+  processed_data: "data/processed"
 
 # Hardware
-device: "cuda"              # Will fallback to CPU if no GPU
+device: "auto"              # auto-detect GPU/CPU
+mixed_precision: false      # Use mixed precision training
