@@ -1,0 +1,30 @@
+# Tokenizer Configuration
+tokenizer:
+  vocab_size: 1000          # Size of vocabulary (smaller for our dataset)
+  max_sequence_length: 64   # Maximum tokens per sequence
+  
+  # Special tokens
+  pad_token: "<PAD>"        # Padding token
+  unk_token: "<UNK>"        # Unknown token  
+  start_token: "<START>"    # Start of sequence
+  end_token: "<END>"        # End of sequence
+  
+  # Code-specific tokens
+  special_tokens:
+    - "<CODE>"              # Marks beginning of code
+    - "<COMMENT>"           # Marks beginning of comment
+    - "<INDENT>"            # Represents indentation
+    - "<NEWLINE>"           # Represents line breaks
+
+# Data split configuration
+data_split:
+  train_ratio: 0.8          # 80% for training (12 examples)
+  val_ratio: 0.2            # 20% for validation (3 examples)
+  test_ratio: 0.0           # 0% for test (we'll use validation for testing)
+
+# Processing settings
+processing:
+  normalize_whitespace: true
+  remove_extra_newlines: true
+  max_code_tokens: 50       # Limit code sequence length
+  max_comment_tokens: 30    # Limit comment sequence length
